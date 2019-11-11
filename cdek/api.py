@@ -178,15 +178,21 @@ class CDEKClient:
 
         return response
 
-    def get_regions(self, region_code_ext: Optional[int] = None,
-                    region_code: Optional[int] = None,
-                    page: int = 0, size: int = 1000) -> List[Dict]:
+    def get_regions(
+        self,
+        region_code_ext: Optional[int] = None,
+        region_code: Optional[int] = None,
+        country_code: Optional[str] = None,
+        page: int = 0,
+        size: int = 1000
+    ) -> List[Dict]:
         """Список регионов.
 
         Метод используется для получения детальной информации о регионах.
 
         :param region_code_ext: Код региона
         :param region_code:	Код региона в ИС СДЭК
+        :param country_code: Country code from ISO 3166-1 alpha-2 standart https://ru.wikipedia.org/wiki/ISO_3166-1_alpha-2
         :param int page: Номер страницы выборки
         :param int size: Ограничение выборки
         :return: Список регионов по заданным параметрам
@@ -197,7 +203,7 @@ class CDEKClient:
             data={
                 'regionCodeExt': region_code_ext,
                 'regionCode': region_code,
-                'countryCode': 'RU',
+                'countryCode': country_code,
                 'page': page,
                 'size': size,
             },
@@ -206,15 +212,21 @@ class CDEKClient:
 
         return response
 
-    def get_cities(self, region_code_ext: Optional[int] = None,
-                   region_code: Optional[int] = None,
-                   page: int = 0, size: int = 1000) -> List[Dict]:
+    def get_cities(
+        self,
+        region_code_ext: Optional[int] = None,
+        region_code: Optional[int] = None,
+        country_code: Optional[str] = None,
+        page: int = 0,
+        size: int = 1000
+    ) -> List[Dict]:
         """Список городов.
 
         Метод используется для получения детальной информации о городах.
 
         :param region_code_ext: Код региона
         :param region_code: Код региона в ИС СДЭК
+        :param country_code: Country code from ISO 3166-1 alpha-2 standart https://ru.wikipedia.org/wiki/ISO_3166-1_alpha-2
         :param page: Номер страницы выборки
         :param size: Ограничение выборки
         :return: Список городов по заданным параметрам
@@ -225,7 +237,7 @@ class CDEKClient:
             data={
                 'regionCodeExt': region_code_ext,
                 'regionCode': region_code,
-                'countryCode': 'RU',
+                'countryCode': country_code,
                 'page': page,
                 'size': size,
             },
